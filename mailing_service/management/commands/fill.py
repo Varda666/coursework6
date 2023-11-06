@@ -1,12 +1,12 @@
 from django.core.management import BaseCommand
 
-from catalog.models import Category, Product, Version
-from users.models import User
+# from mailing_service.models import Category, Product, Version
+# from users.models import User
 
 
-class Command(BaseCommand):
-
-    def handle(self, *args, **options):
+# class Command(BaseCommand):
+#
+#     def handle(self, *args, **options):
         # category_list = [
         #     {'name': 'Овощи', 'desc': 'Описание категории овощи'},
         #     {'name': 'Фрукты', 'desc': 'Описание категории фрукты'},
@@ -58,18 +58,18 @@ class Command(BaseCommand):
         # Product.objects.all().delete()
         # Product.objects.bulk_create(product_for_create)
 
-        vers_pom = Product.objects.get(name='Помидор')
-        vers_arb = Product.objects.get(name='Арбуз')
-
-        version_list = [
-            {'num': '1', 'name': 'Первая', 'prod': vers_pom},
-            {'num': '2', 'name': 'Вторая', 'prod': vers_pom, 'is_active': True},
-            {'num': '1', 'name': 'Первая', 'prod': vers_arb},
-            {'num': '2', 'name': 'Вторая', 'prod': vers_arb},
-            {'num': '3', 'name': 'Третья', 'prod': vers_arb, 'is_active': True}
-        ]
-        version_for_create = []
-        for item in version_list:
-            version_for_create.append(Version(**item))
-        Version.objects.all().delete()
-        Version.objects.bulk_create(version_for_create)
+        # vers_pom = Product.objects.get(name='Помидор')
+        # vers_arb = Product.objects.get(name='Арбуз')
+        #
+        # version_list = [
+        #     {'num': '1', 'name': 'Первая', 'prod': vers_pom},
+        #     {'num': '2', 'name': 'Вторая', 'prod': vers_pom, 'is_active': True},
+        #     {'num': '1', 'name': 'Первая', 'prod': vers_arb},
+        #     {'num': '2', 'name': 'Вторая', 'prod': vers_arb},
+        #     {'num': '3', 'name': 'Третья', 'prod': vers_arb, 'is_active': True}
+        # ]
+        # version_for_create = []
+        # for item in version_list:
+        #     version_for_create.append(Version(**item))
+        # Version.objects.all().delete()
+        # Version.objects.bulk_create(version_for_create)

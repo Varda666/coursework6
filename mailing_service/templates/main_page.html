@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+    <div class="col-6">
+        <div class="card">
+            Привет, это главная страница!
+            Чтобы создать рассылку, зарегистрируйтесь или войдите в свой профиль)
+
+            <p>Сейчас на сайте: </p>
+            <p>- количество рассылок всего - {{ count_mailing_message }} </p>
+            <p>- количество активных рассылок - {{ count_active_mailing_message }} </p>
+            <p>- количество уникальных клиентов для рассылок - {{ count_unique_clients }} </p>
+
+            <div>
+                {% for blog_article in blog_articles %}
+                    {{ blog_article }}
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</body>
+
+{% endblock %}

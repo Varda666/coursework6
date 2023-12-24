@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.mail import send_mail
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from blog.models import BlogMaterial
@@ -17,7 +17,6 @@ class BlogMaterialCreateView(LoginRequiredMixin, PermissionRequiredMixin, Create
 
 class BlogMaterialListView(ListView):
     model = BlogMaterial
-
 
     # def get_queryset(self, *args, **kwargs):
     #     queryset = super().get_queryset(*args, **kwargs)
@@ -64,6 +63,3 @@ class BlogMaterialDeleteView(DeleteView):
     # permission_required = 'blog.delete_blogmaterial'
     permission_classes = (IsOwnerOrReadOnly,)
     success_url = reverse_lazy('blog:list')
-
-
-

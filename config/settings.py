@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'mailing_service',
     'blog',
     'users',
-    ]
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

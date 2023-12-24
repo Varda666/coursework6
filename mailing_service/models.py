@@ -10,7 +10,6 @@ class Client(models.Model):
     comment = models.TextField(max_length=300, verbose_name='комментарий')
     user = models.ForeignKey(to='users.User', to_field='email', on_delete=models.PROTECT)
 
-
     def __str__(self):
         return self.email, self.first_name, self.last_name
 
@@ -20,11 +19,23 @@ class Client(models.Model):
 
 
 class Mailing(models.Model):
+    FREQUENCY_CHOISES = [
+        ('once a day', 'once a day'),
+        ('once a week', 'once a week'),
+        ('once a month', 'once a month'),
+
+    ]
+    STATUS_CHOISES = [
+        ('completed', 'completed'),
+        ('created', 'created'),
+        ('launched', 'launched'),
+
+    ]
     message = models.ForeignKey(to='MailingMessage', to_field='id', on_delete=models.PROTECT, verbose_name='сообщение')
     datetime_from = models.DateTimeField(default=datetime.now(), verbose_name='время рассылки с')
     datetime_to = models.DateTimeField(default=datetime.now() + timedelta(hours=24), verbose_name='время рассылки до')
-    frequency = models.IntegerField(verbose_name='периодичность в днях')
-    status = models.BooleanField(default=True, verbose_name='статус рассылки')
+    frequency = models.IntegerField(choices=FREQUENCY_CHOISES, verbose_name='периодичность')
+    status = models.BooleanField(choices=STATUS_CHOISES, default=True, verbose_name='статус рассылки')
 
     class Meta:
         verbose_name = 'рассылка'
@@ -36,7 +47,6 @@ class MailingMessage(models.Model):
     text = models.TextField(verbose_name='тело письма')
     clients = models.ManyToManyField(to='Client', blank=True, related_name='клиенты')
     user = models.ForeignKey(to='users.User', to_field='email', on_delete=models.PROTECT, verbose_name='отправитель')
-
 
     def __str__(self):
         return self.item, self.text

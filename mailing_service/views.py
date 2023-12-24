@@ -1,9 +1,9 @@
-from django.conf import settings
-from django.core.cache import cache
+# from django.conf import settings
+# from django.core.cache import cache
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 
-from mailing_service.forms import ClientForm, MailingForm, MailingLogsForm, MailingMessageForm
+from mailing_service.forms import ClientForm, MailingLogsForm, MailingMessageForm
 from mailing_service.models import Client, Mailing, MailingLogs, MailingMessage
 from blog.models import BlogMaterial
 from django.urls import reverse_lazy
@@ -48,10 +48,9 @@ class MailingMessageMailingCreateView(LoginRequiredMixin, PermissionRequiredMixi
         _send_mail_email(self.object.client, self.object.item, self.object.text)
 
         if formset.is_valid():
-                formset.instance = self.object
-                formset.save()
+            formset.instance = self.object
+            formset.save()
         return super().form_valid(form)
-
 
     # def get_queryset(self, *args, **kwargs):
     #     return Product.user.filter(is_verificated=True, is_activated=True)
@@ -65,7 +64,6 @@ class MailingMessageListView(ListView):
     #     context_data = super().get_context_data(**kwargs)
     #     context_data['category'] = get_cached_categories()
     #     return context_data
-
 
     # def get_queryset(self, *args, **kwargs):
     #     queryset = super().get_queryset(*args, **kwargs)
@@ -93,10 +91,9 @@ class MailingMessageMailingDetailView(DetailView):
         self.object = form.save()
 
         if formset.is_valid():
-                formset.instance = self.object
-                formset.save()
+            formset.instance = self.object
+            formset.save()
         return super().form_valid(form)
-
 
     # def get_object(self, queryset=None):
     #     self.object = super().get_object(queryset)
@@ -115,8 +112,6 @@ class MailingMessageMailingDetailView(DetailView):
     #         version_list = self.object.version_set.all()
     #     context_data['versions'] = version_list
     #     return context_data
-
-
 
 
 class MailingMessageMailingUpdateView(UpdateView):
@@ -197,8 +192,6 @@ class MailingLogsDetailView(DetailView):
     # permission_required = 'mailing_service.view_logs'
     permission_classes = (IsOwnerOrReadOnly,)
 
-
-
 # def catalog_home(request):
 #     product_list = Product.objects.all()
 #     context = {
@@ -246,4 +239,3 @@ class MailingLogsDetailView(DetailView):
 #             Product.objects.create(name=name, desc=desc, cat=cat2, price=price, imd=imd)
 #
 #     return render(request, 'mailingmessage_form.html')
-

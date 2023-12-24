@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.core.cache import cache
+# from django.core.cache import cache
 from apscheduler.schedulers.blocking import BlockingScheduler
 from datetime import datetime
 
@@ -32,5 +32,3 @@ def _send_mail_email(recipient_list, subject, message):
     if Mailing.datetime_from < datetime.now() < Mailing.datetime_to:
         scheduler.add_job(job, 'interval', days=Mailing.frequency)
         scheduler.start()
-
-

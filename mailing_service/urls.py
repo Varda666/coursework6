@@ -28,8 +28,6 @@ urlpatterns = [
     path('delete/client/<int:pk>/', ClientDeleteView.as_view(), name='delete_client'),
     path('logs/', MailingLogsListView.as_view(), name='delete_client'),
     path('detail/logs/<int:pk>/', MailingLogsDetailView.as_view(), name='delete_client'),
-
-    
 ]
 
 

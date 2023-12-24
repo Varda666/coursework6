@@ -1,7 +1,8 @@
 
 from django.contrib.auth.base_user import BaseUserManager
-from django.contrib.auth.models import AbstractUser, UserManager
+from django.contrib.auth.models import AbstractUser, Group, GroupManager
 from django.db import models
+# from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
@@ -50,11 +51,20 @@ class User(AbstractUser):
     is_staff = models.BooleanField(default=False, verbose_name='Статус менеджера')
     is_superuser = models.BooleanField(default=False, verbose_name='Статус администратора')
 
-
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
 
+class CustomGroup(Group):
+    users = models.ForeignKey(
+        User,
+        to_field='email',
+        verbose_name="users",
+        blank=True,
+        on_delete=models.DO_NOTHING,
+        default=None,
+    )
 
+    objects = GroupManager()

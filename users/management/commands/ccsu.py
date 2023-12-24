@@ -2,6 +2,7 @@ from django.core.management import BaseCommand
 
 from users.models import User
 
+
 class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
@@ -16,7 +17,3 @@ class Command(BaseCommand):
 
         user.set_password('123qwe')
         user.save()
-
-
-
-

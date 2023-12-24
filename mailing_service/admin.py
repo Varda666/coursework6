@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from mailing_service.models import Client, MailingMessage, Mailing, MailingLogs
+from mailing_service.models import Client, MailingMessage, Mailing
 
 
 # Register your models here.
@@ -27,5 +27,3 @@ class MailingAdmin(admin.ModelAdmin):
     list_display = ('message', 'datetime_from', 'datetime_to', 'frequency', 'status')
     list_filter = ('message', 'datetime_from', 'datetime_to', 'frequency', 'status')
     search_fields = ('message', 'datetime_from', 'datetime_to', 'frequency', 'status')
-
-

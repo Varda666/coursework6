@@ -1,4 +1,4 @@
-from django.core.management import BaseCommand
+# from django.core.management import BaseCommand
 
 # from mailing_service.models import Category, Product, Version
 # from users.models import User
@@ -28,8 +28,6 @@ from django.core.management import BaseCommand
         #     users_for_create.append(User(**item))
         # User.objects.all().delete()
         # User.objects.bulk_create(users_for_create)
-
-
 
         # cat1, _ = Category.objects.get_or_create(name='Овощи', defaults={
         #     "desc": "Описание категории овощи"

@@ -10,6 +10,7 @@ def _send_mail_email(id, recipient_list):
         recipient_list=[recipient_list]
     )
 
+
 def _send_mail_password(new_password, recipient_list):
     send_mail(
         subject='Вы сменили пароль',

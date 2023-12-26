@@ -27,13 +27,14 @@ def get_main_page(request):
 
 
 class MailingMessageMailingCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
-    model = MailingMessage, Mailing
+    model = MailingMessage
+    fields = ['item', 'text', 'clients']
     permission_required = 'mailing_service.add_mailingmessage'
     success_url = reverse_lazy('mailing_service:list_mailingmessage')
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        FormSet = inlineformset_factory(MailingMessage, Mailing, form=MailingMessageForm, extra=2)
+        FormSet = inlineformset_factory(MailingMessage, Mailing, form=MailingMessageForm, extra=1)
         if self.request.method == 'POST':
             formset = FormSet(self.request.POST, instance=self.object)
         else:

@@ -10,7 +10,7 @@ from config import settings
 
 class BlogMaterialCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = BlogMaterial
-    fields = ('name', 'slug', 'imd')
+    fields = ('name', 'slug', 'img')
     permission_required = 'blog.add_blogmaterial'
     success_url = reverse_lazy('blog:list')
 
